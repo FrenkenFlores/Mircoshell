@@ -6,7 +6,7 @@
 /*   By: fflores <fflores@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:20:44 by fflores           #+#    #+#             */
-/*   Updated: 2021/03/18 15:19:30 by fflores          ###   ########.fr       */
+/*   Updated: 2021/03/18 15:47:45 by fflores          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,17 @@ int main(int argc, char **argv, char **envp)
 		type_prompt();
 		read_command( command, parameters );
 		// print_input(command, parameters);
-		if (fork() != 0)
-			wait(NULL);
-		else
-		{
+		// if (fork() != 0)
+		// 	wait(NULL);
+		// else
+		// {
 			strcpy( cmd, "/bin/" );
 			strcat( cmd, command );
-			execve( cmd, parameters, envp );
-		}
-		if ( strcmp( command, "exit" ) == 0)
-			break;
+			print_input(cmd, parameters);
+		// 	execve( cmd, parameters, envp );
+		// }
+		// if ( strcmp( command, "exit" ) == 0)
+		// 	break;
 	}
 	return (0);
 }
