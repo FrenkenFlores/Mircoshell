@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   microshell.c                                       :+:      :+:    :+:   */
+/*   microshell_v1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fflores <fflores@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:20:44 by fflores           #+#    #+#             */
-/*   Updated: 2021/03/18 12:28:44 by fflores          ###   ########.fr       */
+/*   Updated: 2021/03/18 13:55:22 by fflores          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "microshell.h"
+#include "microshell_v1.h"
 
 
 void type_prompt()
@@ -18,7 +18,7 @@ void type_prompt()
 	static int first_time = 1;
 	if (first_time)
 	{
-		char *CLEAR_SCREEN_ANSI = " \e[1;1H\e[2J";
+		char *CLEAR_SCREEN_ANSI = " \e[1;1H\e[2J"; // move cursor up (1;1) and then clean the screen
 		write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 		first_time = 0;
 	}
