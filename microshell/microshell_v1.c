@@ -6,7 +6,7 @@
 /*   By: fflores <fflores@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 17:20:44 by fflores           #+#    #+#             */
-/*   Updated: 2021/03/18 13:55:22 by fflores          ###   ########.fr       */
+/*   Updated: 2021/03/18 15:19:30 by fflores          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,20 @@ void read_command ( char *command, char **parameters)
 }
 
 
+void print_input(char *command, char **parameters)
+{
+	int j = 0;
+
+	write(1, command, strlen(command));
+	write(1, "\n", 1);
+	while (parameters[j] != NULL)
+	{
+		write(1, parameters[j], strlen(parameters[j]));
+		write(1, "\n", 1);
+		j++;
+	}
+}
+
 int main(int argc, char **argv, char **envp)
 {
 	char cmd[100];
@@ -69,6 +83,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		type_prompt();
 		read_command( command, parameters );
+		// print_input(command, parameters);
 		if (fork() != 0)
 			wait(NULL);
 		else
