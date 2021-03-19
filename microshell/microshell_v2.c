@@ -6,7 +6,7 @@
 /*   By: fflores <fflores@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:40:47 by fflores           #+#    #+#             */
-/*   Updated: 2021/03/18 16:50:19 by fflores          ###   ########.fr       */
+/*   Updated: 2021/03/18 17:16:02 by fflores          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ int main(int argc, char **argv, char **envp)
 		bash_command = concatenate_bin(command);
 		// print_input(bash_command, parameters);
 		if ((fork_ret = fork()) != 0)
+		{
 			waitpid(-1, status, 0);
+			free(bash_command);
+		}
 		else
 			exec_ret = execve(bash_command, parameters, envp);
 		if (exec_ret == -1)
